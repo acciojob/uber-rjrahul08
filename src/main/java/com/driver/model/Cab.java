@@ -55,4 +55,8 @@ public class Cab {
     public void setDriver(Driver driver) {
         this.driver = driver;
     }
+
+    public boolean getAvailable() {
+        return this.available;
+    }
 }
