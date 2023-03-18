@@ -1,35 +1,34 @@
 package com.driver.model;
 
-
 import javax.persistence.*;
 
 @Entity
 @Table(name="cab")
-public class Cab {
+public class Cab{
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int Id;
+    private int id;
 
     private int perKmRate;
 
-    private boolean available;
+    //Mapping cab and driver  (parent -- cab , child -- driver )
 
     @OneToOne(mappedBy = "cab" , cascade = CascadeType.ALL)
     private Driver driver;
 
-    public Cab(){}
-    public Cab(int id, int perKmRate, boolean available) {
-        Id = id;
-        this.perKmRate = perKmRate;
-        this.available = available;
+
+    public Cab() {
     }
 
+    private boolean available;
+
     public int getId() {
-        return Id;
+        return id;
     }
 
     public void setId(int id) {
-        Id = id;
+        this.id = id;
     }
 
     public int getPerKmRate() {
@@ -40,7 +39,7 @@ public class Cab {
         this.perKmRate = perKmRate;
     }
 
-    public boolean isAvailable() {
+    public boolean getAvailable() {
         return available;
     }
 
@@ -56,7 +55,4 @@ public class Cab {
         this.driver = driver;
     }
 
-    public boolean getAvailable() {
-        return this.available;
-    }
 }
